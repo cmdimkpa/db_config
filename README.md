@@ -5,7 +5,7 @@ This NoSQL database protocol consists of a Node.js REST API Gateway, PyPy Worker
 
 ## Design Features
 
-1. S3 Bucket back-end is secure, cheap, highly-concurrent, always-available and maintenance-free.
+1. S3 Bucket back-end is secure, cheap, highly-concurrent, always-available and maintenance-free. Visualize/Monitor your database from the AWS console. Suite of AWS tooling available for management and analytics.
 
 2. PyPy Worker API localizes the database transaction cost (compute and network resources consumed) to the machine the database server is running on, allowing you to distribute network traffic/load over a cluster of servers efficiently while talking to the same storage backend concurrently. The worker API also uses PyPy JIT compilation for extra performance.
 
