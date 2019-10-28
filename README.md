@@ -9,11 +9,11 @@ This NoSQL database protocol consists of a Node.js REST API Gateway, Python Work
 
 2. Python Worker API localizes the database transaction cost (compute and network resources consumed) to the machine the database server is running on, allowing you to distribute network traffic/load over a cluster of servers efficiently while talking to the same storage backend concurrently.
 
-3. Node.js Gateway increases application concurrency while also serving as an efficient queue.
+3. Node.js Gateway increases application-level database concurrency while also serving as an efficient queue.
 
 Jump to [Performance](#Performance).
 
-### Requirements
+## Requirements
 
 You need to have `Node`, `NPM`, `Python2.7+` and `Python Requests` installed for this to work. You also need a working `S3 Bucket` with `programmatic access keys`.
 
@@ -27,7 +27,7 @@ $ sudo db_config.py show_config
 $ sudo db_config.py build_config (to build Database Server)
 </code></pre>
 
-## CONFIG_FILE Structure
+### CONFIG_FILE Structure
 
 <pre><code>{
   "s3conn_user":"S3_ACCESS_KEY_ID",
@@ -40,13 +40,13 @@ $ sudo db_config.py build_config (to build Database Server)
 
 You can store your credentials online and expose a URL to `import_config` or just `edit_config` directly.
 
-## Sample Database API Base URL
+### Sample Database API Base URL
 
 `http://server_host:server_port/ods/`
 
-## Database Commands
+### Database Commands
 
-### 1. New Table
+#### 1. New Table
 
 POST `.../ods/new_table`<br>
 Payload:
@@ -69,7 +69,7 @@ Response:
 }
 </code></pre>
 
-### 2. New Record
+#### 2. New Record
 
 POST `.../ods/new_record`<br>
 Payload:
@@ -101,7 +101,7 @@ Response:
     ]
 }</code></pre>
 
-### 3. Fetch Records
+#### 3. Fetch Records
 
 POST `.../ods/fetch_records`<br>
 Payload:
@@ -142,7 +142,7 @@ Response:
 }
 </code></pre>
 
-### 4. Update Records
+#### 4. Update Records
 
 POST `.../ods/update_records`<br>
 Payload:
@@ -183,7 +183,7 @@ Response:
     ]
 }</code></pre>
 
-### 5. Delete Records
+#### 5. Delete Records
 
 POST `.../ods/delete_records`<br>
 Payload:
