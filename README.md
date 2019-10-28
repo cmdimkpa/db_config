@@ -1,6 +1,16 @@
 # db_config
 ## Setup an Instant S3-backed NoSQL HTTP Database
 
+This NoSQL database protocol consists of a Node.js REST API Gateway, Python Worker API and an S3 Bucket back-end.
+
+## Design Features
+
+1. S3 Bucket back-end is cheap, highly-concurrent, always-available and maintenance-free.
+2. Python Worker API localizes the database transaction cost (compute and network resources consumed) to the machine the database server is running on, allowing you to distribute network traffic/load over a cluster of servers efficiently while talking to the same storage backend concurrently.
+3. Node.js Gateway increases application concurrency while also serving as an efficient queue.
+
+Jump to [Performance](## Performance).
+
 ### Requirements
 
 You need to have `Node`, `NPM`, `Python2.7+` and `Python Requests` installed for this to work. You also need a working `S3 Bucket` with `programmatic access keys`.
@@ -200,3 +210,9 @@ Response:
         }
     ]
 }</code></pre>
+
+## Performance
+
+
+## Inquiries
+Send questions/comments to: cmdimkpa@gmail.com
