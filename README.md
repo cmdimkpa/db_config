@@ -15,7 +15,7 @@ Jump to [Performance](#Performance).
 
 ## Requirements
 
-You need to have `Node`, `NPM`, `PyPy 2`, `Python 2.7+` and `Python Requests` installed for this to work. You also need a working `S3 Bucket` with `programmatic access keys`.
+You need to have `Node`, `NPM`, `PyPy 2`, `Python 2.7+` and `Python Requests` installed for this service to work. You also need a working `S3 Bucket` with `programmatic access keys`.
 
 ### Command Line Setup
 
