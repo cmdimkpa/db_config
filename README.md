@@ -5,7 +5,7 @@ This NoSQL database protocol consists of a Node.js REST API Gateway, Python Work
 
 ## Design Features
 
-1. S3 Bucket back-end is cheap, highly-concurrent, always-available and maintenance-free.
+1. S3 Bucket back-end is secure, cheap, highly-concurrent, always-available and maintenance-free.
 
 2. Python Worker API localizes the database transaction cost (compute and network resources consumed) to the machine the database server is running on, allowing you to distribute network traffic/load over a cluster of servers efficiently while talking to the same storage backend concurrently.
 
@@ -30,12 +30,12 @@ $ sudo db_config.py build_config (to build Database Server)
 ### CONFIG_FILE Structure
 
 <pre><code>{
-  "s3conn_user":"S3_ACCESS_KEY_ID",
-  "s3conn_pass":"S3_SECRET_ACCESS_KEY",
-  "s3region":"S3_REGION",
-  "s3bucket_name":"DATABASE_S3_BUCKET_NAME",
-  "server_host":"DATABASE_SERVER_HOST",
-  "server_port":"DATABASE_SERVER_PORT"
+  "s3conn_user": S3_ACCESS_KEY_ID,
+  "s3conn_pass": S3_SECRET_ACCESS_KEY,
+  "s3region": S3_REGION,
+  "s3bucket_name": DATABASE_S3_BUCKET_NAME,
+  "server_host": DATABASE_SERVER_HOST,
+  "server_port": DATABASE_SERVER_PORT
 }</code></pre>
 
 You can store your credentials online and expose a URL to `import_config` or just `edit_config` directly.
