@@ -53,11 +53,7 @@ Payload:
 <pre><code>
 {
 	"tablename":"Cars",
-	"fields":[
-	   "make",
-	   "model",
-	   "year"
-	   ]
+	"fields":["make","model","year"]
 }
 </code></pre>
 Response:
