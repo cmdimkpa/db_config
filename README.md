@@ -22,9 +22,9 @@ You need to have `Node`, `NPM`, `PyPy 2`, `Python 2.7+` and `Python Requests` in
 <pre><code>
 $ sudo wget https://raw.githubusercontent.com/cmdimkpa/db_config/master/db_config.py
 $ sudo python db_config.py import_config CONFIG_FILE_URL
-$ sudo python db_config.py edit_config
-$ sudo python db_config.py show_config
-$ sudo python db_config.py build_config (to build Database Server)
+$ sudo python db_config.py edit_config (make any required changes to config via interactive prompt)
+$ sudo python db_config.py show_config (verify config)
+$ sudo python db_config.py build_config (build Database Server)
 </code></pre>
 
 ### CONFIG_FILE Structure
