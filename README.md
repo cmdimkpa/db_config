@@ -217,4 +217,4 @@ Response:
 
 
 ## Inquiries
-Send questions/comments to: cmdimkpa@gmail.com
+Send questions/comments to: ayorinderay@gmail.com
