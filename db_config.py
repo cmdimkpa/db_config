@@ -129,20 +129,20 @@ elif mode == "build_config":
         print(run_shell("%s forever start -c node %s" % (sudo,"DBGateway.js")))
         report(BUILD_TASK,breakpoint)
         BUILD_STAGE = 2
-        BUILD_STAGE_DESCR = "Create Python Database Servlet Environment"
+        BUILD_STAGE_DESCR = "Create PyPy Database Servlet Environment"
         BUILD_TASK = "Download DB Servlet file"; breakpoint = now()
         db_servlet_file = make_servlet_file(http.get(servlet_file_url).content)
         print("Servlet file: %s" % db_servlet_file)
         report(BUILD_TASK,breakpoint)
-        BUILD_TASK = "Require Python modules"; breakpoint = now()
+        BUILD_TASK = "Require PyPy modules"; breakpoint = now()
         # require pip
         p = open(THIS_DIR+"get-pip.py","wb+"); p.write(http.get("https://bootstrap.pypa.io/get-pip.py").content); p.close()
-        print(run_shell("%spython get-pip.py" % sudo))
+        print(run_shell("%spypy get-pip.py" % sudo))
         # require modules
-        print(run_shell("%spython -m pip install flask flask_cors boto" % sudo))
+        print(run_shell("%spypy -m pip install flask flask_cors boto" % sudo))
         report(BUILD_TASK,breakpoint)
-        BUILD_TASK = "Run Python Servlet"; breakpoint = now()
-        print(run_shell("%sforever start -c python DBServlet.py %s %s %s %s %s %s" % (sudo,Config["s3bucket_name"],Config["s3conn_user"],Config["s3conn_pass"],Config["s3region"],Config["server_host"],int(Config["server_port"])+1)))
+        BUILD_TASK = "Run pypy Servlet"; breakpoint = now()
+        print(run_shell("%sforever start -c pypy DBServlet.py %s %s %s %s %s %s" % (sudo,Config["s3bucket_name"],Config["s3conn_user"],Config["s3conn_pass"],Config["s3region"],Config["server_host"],int(Config["server_port"])+1)))
         report(BUILD_TASK,breakpoint)
         print("Database API Running on: http://%s:%s/ods/" % (Config["server_host"],Config["server_port"]))
         sys.exit()
