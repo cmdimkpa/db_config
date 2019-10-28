@@ -1,4 +1,5 @@
-# DBSetup.py
+# Setup an Instant S3-backed NoSQL HTTP Database
+
 import sys, subprocess,os,datetime
 import requests as http
 
