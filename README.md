@@ -18,19 +18,19 @@ $ sudo db_config.py build_config (to build Database Server)
 ## CONFIG_FILE Structure
 
 <pre><code>{
-  "s3conn_user":"<S3_ACCESS_KEY_ID>",
-  "s3conn_pass":"<S3_SECRET_ACCESS_KEY>",
-  "s3region":"<S3_REGION>",
-  "s3bucket_name":"<DATABASE_S3_BUCKET_NAME>",
-  "server_host":"<DATABASE_SERVER_HOST>",
-  "server_port":"<DATABASE_SERVER_PORT>"
+  "s3conn_user":"S3_ACCESS_KEY_ID",
+  "s3conn_pass":"S3_SECRET_ACCESS_KEY",
+  "s3region":"S3_REGION",
+  "s3bucket_name":"DATABASE_S3_BUCKET_NAME",
+  "server_host":"DATABASE_SERVER_HOST",
+  "server_port":"DATABASE_SERVER_PORT"
 }</code></pre>
 
 You can store your credentials online and expose a URL to `import_config` or just `edit_config` directly.
 
 ## Sample Database API Base URL
 
-`http://<server_host:server_port>/ods/`
+`http://server_host:server_port/ods/`
 
 ## Database Commands
 
@@ -41,7 +41,11 @@ Payload:
 <pre><code>
 {
 	"tablename":"Cars",
-	"fields":["make","model","year"]
+	"fields":[
+	   "make",
+	   "model",
+	   "year"
+	   ]
 }
 </code></pre>
 Response:
@@ -132,8 +136,12 @@ POST `.../ods/update_records`<br>
 Payload:
 <pre><code>{
 	"tablename":"Cars",
-	"constraints":{"make":"Toyota"},
-	"data":{"make":"Toyota Americas"}
+	"constraints":{
+		"make":"Toyota"
+		},
+	"data":{
+		"make":"Toyota Americas"
+		}
 }</code></pre>
 Response:
 <pre><code>{
