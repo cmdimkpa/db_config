@@ -239,11 +239,20 @@ Response:
 
 A single node was tested in terms of concurrency and average response times under production-level traffic using a combination of `Apache Benchmark` and custom tests.
 
+### Test Server Specs
+
+`Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-1044-aws x86_64)`
+`4GB RAM, 2 Cores`
+
 ### Apache Benchmark
 
 `$ sudo ab -n 1000000 -c 100 http://X.X.X.X:X/ods/get_register`
 
 This benchmark simulates 1 million concurrent requests from 100 connected applications against a single node. The operation performed is fetching the register.
+
+The Image below shows the server load under the test:
+
+![Server Load](https://kpmg-data-api.s3.us-east-2.amazonaws.com/server_test.png)
 
 The results of the test are shown below:
 
