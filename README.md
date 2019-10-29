@@ -1,15 +1,15 @@
 # db_config
 ## Setup an Instant S3-backed NoSQL HTTP Database
 
-This NoSQL database protocol consists of a Node.js REST API Gateway, PyPy Worker API and an S3 Bucket back-end.
+This NoSQL database protocol consists of a Node.js REST API Gateway, PyPy Worker API and your S3 Bucket as a storage back-end.
 
 ## Design Features
 
-1. S3 Bucket back-end is secure, cheap, highly-concurrent, always-available and maintenance-free. Visualize/Monitor your database from the AWS console. Suite of AWS tooling available for management and analytics.
+1. Using an S3 Bucket as a back-end provides a secure, cheap, highly-concurrent, always-available and maintenance-free option. You can also visualize/monitor your database from the AWS S3 Dashboard.
 
-2. PyPy Worker API localizes the database transaction cost (compute and network resources consumed) to the machine the database server is running on, allowing you to distribute network traffic/load over a cluster of servers efficiently while talking to the same storage backend concurrently. The worker API also uses PyPy JIT compilation for extra performance.
+2. The PyPy Worker API localizes the database transaction cost (compute and network resources consumed) to the machine the database server is running on, allowing you to distribute network traffic/load over a cluster of servers efficiently while talking to the same storage backend concurrently. The worker API also utilizes the PyPy JIT compiler for extra performance.
 
-3. Node.js Gateway increases application-level database concurrency while also serving as an efficient queue.
+3. The Node.js Gateway increases application-level database concurrency while also serving as an efficient queue.
 
 Jump to [Performance](#Performance).
 
@@ -22,9 +22,9 @@ You need to have `Node`, `NPM`, `PyPy 2`, `Python 2.7+` and `Python Requests` in
 <pre><code>
 $ sudo wget https://raw.githubusercontent.com/cmdimkpa/db_config/master/db_config.py
 $ sudo python db_config.py import_config CONFIG_FILE_URL
-$ sudo python db_config.py edit_config (make any required changes to config via interactive prompt)
-$ sudo python db_config.py show_config (verify config)
-$ sudo python db_config.py build_config (build Database Server)
+$ sudo python db_config.py edit_config 			// make any required changes to config via interactive prompt)
+$ sudo python db_config.py show_config 			// verify that config is accurate
+$ sudo python db_config.py build_config 		// build the Database Server
 </code></pre>
 
 ### CONFIG_FILE Structure
