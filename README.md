@@ -217,44 +217,6 @@ Response:
     "message": "Register Attached",
     "code": 200,
     "data": {
-        "PhoneBookZ": {
-            "row_count": 0,
-            "dataform": [
-                "first_nameZ",
-                "phone_numberZ",
-                "emailZ",
-                "last_nameZ",
-                "row_id",
-                "PhoneBookZ_id"
-            ]
-        },
-        "PhoneBook": {
-            "row_count": 3,
-            "dataform": [
-                "phone_number",
-                "first_name",
-                "last_name",
-                "email",
-                "row_id",
-                "PhoneBook_id"
-            ]
-        },
-        "FRMJobRequest": {
-            "row_count": 3,
-            "dataform": [
-                "template_name",
-                "b64_csv_1",
-                "job_processed",
-                "b64_csv_2",
-                "owner_token",
-                "engagement_id",
-                "job_output_urls",
-                "template_url",
-                "parameter_dict",
-                "row_id",
-                "FRMJobRequest_id"
-            ]
-        },
         "Cars": {
             "row_count": 4,
             "dataform": [
