@@ -254,7 +254,7 @@ The Image below shows the server load under the test:
 
 ![Server Load](https://kpmg-data-api.s3.us-east-2.amazonaws.com/server_test.png)
 
-We can see that the load is well distributed over both available cores, and regardless of the heavy traffic, the single node is only at 70% capacity. It is also worthy of note that a single node can handle 1 million requests without breaking.
+We can see that the load is well distributed over both available cores, and regardless of the heavy traffic, the single node is only at 70% capacity. It is also worthy of note that a single node can handle 1 million requests successfully without breaking, making it suitable for production.
 
 The results of the test are shown below:
 
