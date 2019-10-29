@@ -1,6 +1,6 @@
 # Setup an Instant S3-backed NoSQL HTTP Database
 
-import sys, subprocess,os,datetime
+import sys,subprocess,os,datetime
 import requests as http
 
 THIS_DIR = os.getcwd()
@@ -26,13 +26,13 @@ def now():
     return datetime.datetime.today()
 
 def elapsed(t):
-    return "took: %s secs" % (now() - t).seconds
+    return (now() - t).seconds
 
 def report(task,breakpoint):
     global BUILD_SECONDS
     lasted = elapsed(breakpoint)
     BUILD_SECONDS+=lasted
-    print("Completed task: %s, %s" % (task,lasted))
+    print("Completed task: %s, took: %s secs" % (task,lasted))
 
 def read_config():
     p = open(config_file,"rb+")
