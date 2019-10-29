@@ -254,7 +254,7 @@ The Image below shows the server load under the test:
 
 ![Server Load](https://kpmg-data-api.s3.us-east-2.amazonaws.com/server_test.png)
 
-We can see that the load is well distributed over both available cores, and regardless of the heavy traffic, the single node is only at 70% capacity. It is also worthy of note that a single node can handle 1 million requests successfully without breaking, making it suitable for production.
+We can see that the load is well distributed over both available cores, and regardless of the heavy traffic, the single node is only at 70% capacity. It is also worthy of note that a single node can handle 1 million requests successfully without breaking, making it suitable for production (the more nodes the better).
 
 The results of the test are shown below:
 
@@ -318,5 +318,14 @@ Percentage of the requests served within a certain time (ms)
 <b>Single-node Concurrency (Production)</b>: 500 requests/second<br>
 <b>Single-node Average Response Time (Production)</b>: 180ms
 
+These figures will naturally improve with the specs of the server hardware and network bandwidth, but we can assume this is the low-end of the system's performance.
+
+### How many nodes (database servers) do you need in production?
+
+Once you are able to benchmark against the average server configuration in your network, you can divide your desired concurrency level by the average single-node concurrency from your benchmark result. You will then connect the calculated number of nodes to a load balancer and put the load balancer in front of your production traffic.
+
 ## Inquiries
-Send questions/comments to: ayorinderay@gmail.com
+
+Questions? Comments?
+
+Catch me on ![LinkedIn](https://www.linkedin.com/in/monty-dimkpa-82506538/)!
