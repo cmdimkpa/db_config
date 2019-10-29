@@ -315,5 +315,8 @@ Percentage of the requests served within a certain time (ms)
 
 </code></pre>
 
+<b>Single-node Concurrency</b>: 500 requests/second
+<b>Single-node Average Response Time</b>: 180ms
+
 ## Inquiries
 Send questions/comments to: ayorinderay@gmail.com
