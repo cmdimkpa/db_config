@@ -237,7 +237,7 @@ Response:
 
 ## Performance
 
-A single node was tested in terms of concurrency and average response times under production-level traffic using a combination of `Apache Benchmark` and custom tests.
+A single node was tested in terms of concurrency and average response times under production-level traffic using `Apache Benchmark`.
 
 ### Test Server Specs
 
