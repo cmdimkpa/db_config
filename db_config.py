@@ -14,6 +14,8 @@ config_file = THIS_DIR+"S3AppDatabase.config"
 gateway_file_url = "https://raw.githubusercontent.com/cmdimkpa/S3AppDatabaseWorker/master/DBGateway.js"
 servlet_file_url = "https://raw.githubusercontent.com/cmdimkpa/S3AppDatabaseWorker/master/S3AppDatabaseWorker.py"
 
+BUILD_SECONDS = 0
+
 try:
     mode = sys.argv[1]
 except:
@@ -27,7 +29,10 @@ def elapsed(t):
     return "took: %s secs" % (now() - t).seconds
 
 def report(task,breakpoint):
-    print("Completed task: %s, %s" % (task,elapsed(breakpoint)))
+    global BUILD_SECONDS
+    lasted = elapsed(breakpoint)
+    BUILD_SECONDS+=lasted
+    print("Completed task: %s, %s" % (task,lasted))
 
 def read_config():
     p = open(config_file,"rb+")
@@ -100,6 +105,15 @@ elif mode == "import_config":
     except:
         print("Import URL not found, Exiting...")
         sys.exit()
+elif mode == "stop_config":
+    try:
+        run_shell("cd %s" % THIS_DIR)
+        print(run_shell("%s forever stop -c node %s" % (sudo,"DBGateway.js")))
+        Config = read_config()
+        print(run_shell("%sforever stop -c pypy DBServlet.py %s %s %s %s %s %s" % (sudo,Config["s3bucket_name"],Config["s3conn_user"],Config["s3conn_pass"],Config["s3region"],Config["server_host"],int(Config["server_port"])+1)))
+    except Exception as e:
+        print("Error: %s" % str(e))
+        sys.exit()
 elif mode == "build_config":
     try:
         BUILD_STAGES = 2
@@ -145,6 +159,7 @@ elif mode == "build_config":
         print(run_shell("%sforever start -c pypy DBServlet.py %s %s %s %s %s %s" % (sudo,Config["s3bucket_name"],Config["s3conn_user"],Config["s3conn_pass"],Config["s3region"],Config["server_host"],int(Config["server_port"])+1)))
         report(BUILD_TASK,breakpoint)
         print("Database API Running on: http://%s:%s/ods/" % (Config["server_host"],Config["server_port"]))
+        print("BUILD LASTED: %s seconds" % BUILD_SECONDS)
         sys.exit()
     except Exception as error:
         print("BuildError: [Build Stage: %s/%s, Build Process: %s -> %s] : %s" % (BUILD_STAGE,BUILD_STAGES,BUILD_STAGE_DESCR,BUILD_TASK,str(error)))
