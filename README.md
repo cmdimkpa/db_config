@@ -237,6 +237,19 @@ Response:
 
 ## Performance
 
+A single node was tested in terms of concurrency and average response times under production-level traffic using a combination of `Apache Benchmark` and custom tests.
+
+### Apache Benchmark
+
+`$ sudo ab -n 1000000 -c 100 http://X.X.X.X:X/ods/get_register`
+
+This benchmark simulates 1 million concurrent requests from 100 connected applications against a single node. The operation performed is fetching the register.
+
+The results of the test are shown below:
+
+<pre><code>
+
+</code></pre>
 
 ## Inquiries
 Send questions/comments to: ayorinderay@gmail.com
