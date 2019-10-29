@@ -328,4 +328,4 @@ Once you are able to benchmark against the average server configuration in your 
 
 Questions? Comments?
 
-Catch me on ![LinkedIn](https://www.linkedin.com/in/monty-dimkpa-82506538/)!
+Catch me on <a href="https://www.linkedin.com/in/monty-dimkpa-82506538/">LinkedIn</a>!
