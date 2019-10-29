@@ -259,6 +259,59 @@ We can see that the load is well distributed over both available cores, and rega
 The results of the test are shown below:
 
 <pre><code>
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking X.X.X.X (be patient)
+Completed 100000 requests
+Completed 200000 requests
+Completed 300000 requests
+Completed 400000 requests
+Completed 500000 requests
+Completed 600000 requests
+Completed 700000 requests
+Completed 800000 requests
+Completed 900000 requests
+Completed 1000000 requests
+Finished 1000000 requests
+
+
+Server Software:
+Server Hostname:        X.X.X.X
+Server Port:            3066
+
+Document Path:          /ods/get_register
+Document Length:        627 bytes
+
+Concurrency Level:      100
+Time taken for tests:   1788.315 seconds
+Complete requests:      1000000
+Failed requests:        0
+Total transferred:      969000000 bytes
+HTML transferred:       627000000 bytes
+Requests per second:    559.19 [#/sec] (mean)
+Time per request:       178.831 [ms] (mean)
+Time per request:       1.788 [ms] (mean, across all concurrent requests)
+Transfer rate:          529.15 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       7
+Processing:   127  179  23.1    173    1683
+Waiting:      127  179  23.1    173    1683
+Total:        127  179  23.1    173    1683
+
+Percentage of the requests served within a certain time (ms)
+  50%    173
+  66%    180
+  75%    186
+  80%    191
+  90%    209
+  95%    223
+  98%    239
+  99%    253
+ 100%   1683 (longest request)
 
 </code></pre>
 
