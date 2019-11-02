@@ -157,7 +157,7 @@ def RunEvent(mode):
             p = open(THIS_DIR+"get-pip.py","wb+"); p.write(http.get("https://bootstrap.pypa.io/get-pip.py").content); p.close()
             print(run_shell("%spypy get-pip.py" % sudo))
             # require modules
-            print(run_shell("%spypy -m pip install flask flask_cors boto eventlet flask-socketio" % sudo))
+            print(run_shell("%spypy -m pip install flask flask_cors boto" % sudo))
             report(BUILD_TASK,breakpoint)
             BUILD_TASK = "Run pypy Servlet"; breakpoint = now()
             print(run_shell("%sforever start -c pypy DBServlet.py %s %s %s %s %s %s" % (sudo,Config["s3bucket_name"],Config["s3conn_user"],Config["s3conn_pass"],Config["s3region"],Config["server_host"],int(Config["server_port"])+1)))
