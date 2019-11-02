@@ -24,7 +24,8 @@ $ sudo wget https://raw.githubusercontent.com/cmdimkpa/db_config/master/db_confi
 $ sudo python db_config.py import_config CONFIG_FILE_URL
 $ sudo python db_config.py edit_config 		// make any required changes to config via interactive prompt)
 $ sudo python db_config.py show_config 		// verify that config is accurate
-$ sudo python db_config.py build_config 	// build the Database Server
+$ sudo python db_config.py build_config 	// build (run) the Database Server
+$ sudo python db_config.py rebuild_config 	// restart the Database Server
 $ sudo python db_config.py stop_config 		// stop the Database Server
 </code></pre>
 
