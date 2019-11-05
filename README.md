@@ -15,13 +15,13 @@ Jump to [Performance](#Performance).
 
 ## Requirements
 
-You need to have `Node`, `NPM`, `PyPy 2`, `Python 2.7+` and `Python Requests` installed for this service to work. You also need a working `S3 Bucket` with `programmatic access keys`.
+You need to have `Node`, `NPM`, `PyPy 2`, `Python 2.7+` and `Python Requests` installed for this service to work. You also need a working `S3 Bucket` with `programmatic access keys`. The service depends on Network I/O, so an Internet Connection is required on the target machine.
 
 ### Command Line Setup
 
 <pre><code>
 $ sudo wget https://raw.githubusercontent.com/cmdimkpa/db_config/master/db_config.py
-$ sudo python db_config.py import_config CONFIG_FILE_URL
+$ sudo python db_config.py import_config CONFIG_FILE_URL   // replace with your actual config URL
 $ sudo python db_config.py edit_config 		// make any required changes to config via interactive prompt)
 $ sudo python db_config.py show_config 		// verify that config is accurate
 $ sudo python db_config.py build_config 	// build (run) the Database Server
