@@ -120,7 +120,7 @@ def RunEvent(mode):
             sys.exit()
     elif mode == "build_config":
         try:
-            run_shell("cd %s;openssl req -nodes -new -x509 -keyout %sserver.key -out %sserver.cert" % (r'"%s"'%THIS_DIR,)*3)
+            run_shell("cd %s;openssl req -nodes -new -x509 -keyout %s -out %s" % (r'"%s"'%THIS_DIR,r'"%sserver.key"'%THIS_DIR,r'"%sserver.cert"'%THIS_DIR))
             BUILD_STAGES = 2
             BUILD_STAGE = 1
             BUILD_STAGE_DESCR = "Create Gateway Node Environment"
@@ -134,6 +134,8 @@ def RunEvent(mode):
             gateway_src = gateway_src.replace("__DB_GATEWAY_PORT__",Config["server_port"])
             gateway_src = gateway_src.replace("__DB_SERVER_HOST__",Config["server_host"])
             gateway_src = gateway_src.replace("__DB_SERVER_PORT__",str(int(Config["server_port"])+1))
+            gateway_src = gateway_src.replace("__SERVER_KEYFILE__",r'"%sserver.key"'%THIS_DIR)
+            gateway_src = gateway_src.replace("__SERVER_CERTFILE__",r'"%sserver.cert"'%THIS_DIR)
             gateway_file = make_gateway_file(gateway_src)
             print("gateway file: %s" % gateway_file)
             report(BUILD_TASK,breakpoint)
