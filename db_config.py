@@ -120,7 +120,7 @@ def RunEvent(mode):
             sys.exit()
     elif mode == "build_config":
         try:
-            run_shell("cd %s;openssl req -nodes -new -x509 -keyout %sserver.key -out %sserver.cert" % (THIS_DIR,)*3)
+            run_shell("cd %s;openssl req -nodes -new -x509 -keyout %sserver.key -out %sserver.cert" % (r'"%s"'%THIS_DIR,)*3)
             BUILD_STAGES = 2
             BUILD_STAGE = 1
             BUILD_STAGE_DESCR = "Create Gateway Node Environment"
