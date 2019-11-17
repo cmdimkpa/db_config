@@ -117,7 +117,7 @@ def RunEvent(mode):
             sys.exit()
     elif mode == "stop_config":
         try:
-            run_shell("cd %s" % r'"%s"'%THIS_DIR)
+            run_shell("cd %s" % r'%s'%THIS_DIR)
             print(run_shell("%sforever stop -c node DBGateway.js" % sudo))
             print(run_shell("%sforever stop -c pypy DBServlet.py" % sudo))
         except Exception as e:
@@ -139,13 +139,13 @@ def RunEvent(mode):
             gateway_src = gateway_src.replace("__DB_GATEWAY_PORT__",Config["server_port"])
             gateway_src = gateway_src.replace("__DB_SERVER_HOST__",Config["server_host"])
             gateway_src = gateway_src.replace("__DB_SERVER_PORT__",str(int(Config["server_port"])+1))
-            gateway_src = gateway_src.replace("__SERVER_KEYFILE__",r'"%sserver.key"'%THIS_DIR)
-            gateway_src = gateway_src.replace("__SERVER_CERTFILE__",r'"%sserver.cert"'%THIS_DIR)
+            gateway_src = gateway_src.replace("__SERVER_KEYFILE__",r'%sserver.key'%THIS_DIR)
+            gateway_src = gateway_src.replace("__SERVER_CERTFILE__",r'%sserver.cert'%THIS_DIR)
             gateway_file = make_gateway_file(gateway_src)
             print("gateway file: %s" % gateway_file)
             report(BUILD_TASK,breakpoint)
             BUILD_TASK = "Set Install Path"; breakpoint = now()
-            run_shell("cd %s" % r'"%s"'%THIS_DIR)
+            run_shell("cd %s" % r'%s'%THIS_DIR)
             report(BUILD_TASK,breakpoint)
             BUILD_TASK = "Require Node Modules"; breakpoint = now()
             print(run_shell("%snpm install --save express body-parser request cors compression" % sudo))
