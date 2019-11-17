@@ -50,11 +50,6 @@ def make_servlet_file(src):
     servlet_file = THIS_DIR+"DBServlet.py"; p = open(servlet_file,"wb+"); p.write(src); p.close()
     return servlet_file
 
-def FetchAssets():
-    for asset in ["server.cert","server.key"]:
-        file=THIS_DIR+asset;p=open(file,"wb+");p.write(http.get("https://raw.githubusercontent.com/cmdimkpa/db_config/master/%s"%asset).content);p.close()
-    return None
-
 def run_shell(cmd):
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     out, err = p.communicate()
@@ -117,7 +112,7 @@ def RunEvent(mode):
             sys.exit()
     elif mode == "stop_config":
         try:
-            run_shell("cd %s" % r'%s'%THIS_DIR)
+            run_shell("cd %s" % THIS_DIR)
             print(run_shell("%sforever stop -c node DBGateway.js" % sudo))
             print(run_shell("%sforever stop -c pypy DBServlet.py" % sudo))
         except Exception as e:
@@ -125,7 +120,6 @@ def RunEvent(mode):
             sys.exit()
     elif mode == "build_config":
         try:
-            FetchAssets()
             BUILD_STAGES = 2
             BUILD_STAGE = 1
             BUILD_STAGE_DESCR = "Create Gateway Node Environment"
@@ -139,13 +133,11 @@ def RunEvent(mode):
             gateway_src = gateway_src.replace("__DB_GATEWAY_PORT__",Config["server_port"])
             gateway_src = gateway_src.replace("__DB_SERVER_HOST__",Config["server_host"])
             gateway_src = gateway_src.replace("__DB_SERVER_PORT__",str(int(Config["server_port"])+1))
-            gateway_src = gateway_src.replace("__SERVER_KEYFILE__",r'%sserver.key'%THIS_DIR)
-            gateway_src = gateway_src.replace("__SERVER_CERTFILE__",r'%sserver.cert'%THIS_DIR)
             gateway_file = make_gateway_file(gateway_src)
             print("gateway file: %s" % gateway_file)
             report(BUILD_TASK,breakpoint)
             BUILD_TASK = "Set Install Path"; breakpoint = now()
-            run_shell("cd %s" % r'%s'%THIS_DIR)
+            run_shell("cd %s" % THIS_DIR)
             report(BUILD_TASK,breakpoint)
             BUILD_TASK = "Require Node Modules"; breakpoint = now()
             print(run_shell("%snpm install --save express body-parser request cors compression" % sudo))
@@ -170,7 +162,7 @@ def RunEvent(mode):
             BUILD_TASK = "Run pypy Servlet"; breakpoint = now()
             print(run_shell("%sforever start -c pypy DBServlet.py %s %s %s %s %s %s" % (sudo,Config["s3bucket_name"],Config["s3conn_user"],Config["s3conn_pass"],Config["s3region"],Config["server_host"],int(Config["server_port"])+1)))
             report(BUILD_TASK,breakpoint)
-            print("Database API Running on: https://%s:%s/ods/" % (Config["server_host"],Config["server_port"]))
+            print("Database API Running on: http://%s:%s/ods/" % (Config["server_host"],Config["server_port"]))
             print("BUILD LASTED: %s seconds" % BUILD_SECONDS)
             sys.exit()
         except Exception as error:
