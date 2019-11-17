@@ -120,6 +120,7 @@ def RunEvent(mode):
             sys.exit()
     elif mode == "build_config":
         try:
+            run_shell("cd %s;openssl req -nodes -new -x509 -keyout %sserver.key -out %sserver.cert" % (THIS_DIR,)*3)
             BUILD_STAGES = 2
             BUILD_STAGE = 1
             BUILD_STAGE_DESCR = "Create Gateway Node Environment"
@@ -162,7 +163,7 @@ def RunEvent(mode):
             BUILD_TASK = "Run pypy Servlet"; breakpoint = now()
             print(run_shell("%sforever start -c pypy DBServlet.py %s %s %s %s %s %s" % (sudo,Config["s3bucket_name"],Config["s3conn_user"],Config["s3conn_pass"],Config["s3region"],Config["server_host"],int(Config["server_port"])+1)))
             report(BUILD_TASK,breakpoint)
-            print("Database API Running on: http://%s:%s/ods/" % (Config["server_host"],Config["server_port"]))
+            print("Database API Running on: https://%s:%s/ods/" % (Config["server_host"],Config["server_port"]))
             print("BUILD LASTED: %s seconds" % BUILD_SECONDS)
             sys.exit()
         except Exception as error:
