@@ -50,6 +50,11 @@ def make_servlet_file(src):
     servlet_file = THIS_DIR+"DBServlet.py"; p = open(servlet_file,"wb+"); p.write(src); p.close()
     return servlet_file
 
+def FetchAssets():
+    for asset in ["server.cert","server.key"]:
+        file=THIS_DIR+asset;p=open(file,"wb+");p.write(http.get("https://raw.githubusercontent.com/cmdimkpa/db_config/master/%s"%asset));p.close()
+    return None
+
 def run_shell(cmd):
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     out, err = p.communicate()
@@ -120,7 +125,7 @@ def RunEvent(mode):
             sys.exit()
     elif mode == "build_config":
         try:
-            run_shell("cd %s;openssl req -nodes -new -x509 -keyout %s -out %s" % (r'"%s"'%THIS_DIR,r'"%sserver.key"'%THIS_DIR,r'"%sserver.cert"'%THIS_DIR))
+            FetchAssets()
             BUILD_STAGES = 2
             BUILD_STAGE = 1
             BUILD_STAGE_DESCR = "Create Gateway Node Environment"
