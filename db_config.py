@@ -52,7 +52,7 @@ def make_servlet_file(src):
 
 def FetchAssets():
     for asset in ["server.cert","server.key"]:
-        file=THIS_DIR+asset;p=open(file,"wb+");p.write(http.get("https://raw.githubusercontent.com/cmdimkpa/db_config/master/%s"%asset));p.close()
+        file=THIS_DIR+asset;p=open(file,"wb+");p.write(http.get("https://raw.githubusercontent.com/cmdimkpa/db_config/master/%s"%asset).content);p.close()
     return None
 
 def run_shell(cmd):
