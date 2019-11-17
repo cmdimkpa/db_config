@@ -112,7 +112,7 @@ def RunEvent(mode):
             sys.exit()
     elif mode == "stop_config":
         try:
-            run_shell("cd %s" % THIS_DIR)
+            run_shell("cd %s" % r'"%s"'%THIS_DIR)
             print(run_shell("%sforever stop -c node DBGateway.js" % sudo))
             print(run_shell("%sforever stop -c pypy DBServlet.py" % sudo))
         except Exception as e:
@@ -138,7 +138,7 @@ def RunEvent(mode):
             print("gateway file: %s" % gateway_file)
             report(BUILD_TASK,breakpoint)
             BUILD_TASK = "Set Install Path"; breakpoint = now()
-            run_shell("cd %s" % THIS_DIR)
+            run_shell("cd %s" % r'"%s"'%THIS_DIR)
             report(BUILD_TASK,breakpoint)
             BUILD_TASK = "Require Node Modules"; breakpoint = now()
             print(run_shell("%snpm install --save express body-parser request cors compression" % sudo))
